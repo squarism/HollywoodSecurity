@@ -10,12 +10,11 @@ public class UnauthorizedState implements GameState {
 	
 	String buffer = new String();
 	
-	// best stack with push I can think of -- grr, bloated
-	ArrayList inputArray = new ArrayList();
-	
+	// guess attempts
+	int guesses = 0;
 	
 	public GameState nextState () {
-		if (authorized) {
+		if (authorized && game.viewDone) {
 			AuthorizedState authorizedState = new AuthorizedState();
 			println("changing game state to auth state");
 			return authorizedState;
@@ -30,10 +29,12 @@ public class UnauthorizedState implements GameState {
 			// they hit enter and got the password right
 			if (buffer.equals(password)) {
 				println("Good password.");
+				guesses = 0;
 				authorized = true;
 			} else {
 				// they hit enter with a bad password
 				println("Wrong password:" + buffer);
+				guesses++;
 				buffer = "";
 			}
 		} else {
@@ -69,6 +70,10 @@ public class UnauthorizedState implements GameState {
 	
 	public boolean isAuthorized() {
 		return this.authorized;
+	}
+	
+	public int getGuesses() {
+		return guesses;
 	}
 
 }
