@@ -47,6 +47,7 @@ public class UnauthorizedState implements GameState {
 				case KeyEvent.VK_META: break;
 				case KeyEvent.VK_ALT: break;
 				case KeyEvent.VK_SPACE: break;
+				case BACKSPACE: handleBackspace(); break;
 				default: 
 					if (buffer.length() < 12) {
 						buffer = buffer + key;
@@ -77,6 +78,12 @@ public class UnauthorizedState implements GameState {
 	
 	public int getGuesses() {
 		return guesses;
+	}
+	
+	public void handleBackspace() {
+		if (buffer.length() > 0) {
+			buffer = buffer.substring(0,buffer.length()-1);
+		}
 	}
 
 }

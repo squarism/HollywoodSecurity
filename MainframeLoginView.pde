@@ -123,7 +123,14 @@ public class MainframeLoginView implements GameView {
 		
 		if (cursor) {
 			strokeWeight(5);
-			line(16,25,25,25);
+			strokeCap(SQUARE);
+			line(
+				login[0] - login[2]/2 + 16 + (uas.buffer.length() * 13.5),
+			 	login[1] + 8,
+				login[0] - login[2]/2 + 32 + (uas.buffer.length() * 13.5),
+			 	login[1] + 8
+			);
+			//line(16,25,25,25);
 		}
 		
 		// a slight delay going out of transition
