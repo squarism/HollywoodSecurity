@@ -29,16 +29,25 @@ public class UnauthorizedState implements GameState {
 		if (keyCode == KeyEvent.VK_ENTER) {
 			// they hit enter and got the password right
 			if (buffer.equals(password)) {
-				println("yep.");
+				println("Good password.");
 				authorized = true;
 			} else {
 				// they hit enter with a bad password
-				println("no:" + buffer);
+				println("Wrong password:" + buffer);
 				buffer = "";
 			}
 		} else {
 			// they haven't hit enter yet, keep gathering text
-			buffer = buffer + key;
+
+			// ignore keys
+			switch (keyCode) {
+				case KeyEvent.VK_SHIFT: break;
+				case KeyEvent.VK_CONTROL: break;
+				case KeyEvent.VK_META: break;
+				case KeyEvent.VK_ALT: break;
+				case KeyEvent.VK_SPACE: break;
+				default: buffer = buffer + key;
+			}			
 		}
 
 		/*
