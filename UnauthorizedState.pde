@@ -47,7 +47,10 @@ public class UnauthorizedState implements GameState {
 				case KeyEvent.VK_META: break;
 				case KeyEvent.VK_ALT: break;
 				case KeyEvent.VK_SPACE: break;
-				default: buffer = buffer + key;
+				default: 
+					if (buffer.length() < 12) {
+						buffer = buffer + key;
+					}
 			}			
 		}
 

@@ -7,10 +7,16 @@ PFont monaco;
 PFont menlo;
 PFont proggyClean;
 
+int height;
+int width;
+
 void setup() {
 	size(640, 480); 
-  	frameRate(60);
-  	fill(0); 
+	height = getSize().height;
+	width = getSize().width;
+
+ 	frameRate(60);
+ 	fill(0); 
 	noSmooth();
 	
 	applet = this;
