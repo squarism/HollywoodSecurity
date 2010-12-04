@@ -82,9 +82,9 @@ public class MainframeLoginView implements GameView {
 		// red warning banner up top
 		textFont(proggyClean, 16);
 		//fill(205,80,80);
-		text(warningText, banner[0] - warningText.length() * 16/4 + 8, 16);
+		text(warningText, banner[0] - warningText.length() * 16/4 + 8, 32);
 		strokeWeight(1);
-		line(0, 20, getSize().width, 20);
+		line(0, 36, getSize().width, 36);
 		
 		// password box
 		//stroke(255);
