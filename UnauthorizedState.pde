@@ -5,6 +5,10 @@ public class UnauthorizedState implements GameState {
 	// key handling
 	boolean pressedEnter = false;
 	
+	// were we just denied?
+	// used for displaying error once and then going away
+	boolean justDenied = false;
+	
 	// our magic key
 	String password = "muffin";
 	
@@ -35,9 +39,11 @@ public class UnauthorizedState implements GameState {
 				// they hit enter with a bad password
 				println("Wrong password:" + buffer);
 				guesses++;
+				justDenied = true;
 				buffer = "";
 			}
 		} else {
+			justDenied = false;
 			// they haven't hit enter yet, keep gathering text
 
 			// ignore keys

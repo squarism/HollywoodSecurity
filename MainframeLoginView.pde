@@ -70,7 +70,7 @@ public class MainframeLoginView implements GameView {
 		
 		// outside border
 		fill(0,0,0,0);
-		strokeWeight(16);
+		strokeWeight(1);
 		rect(banner[0], banner[1], banner[2] + 20, banner[3] + 20);
 		
 		// green text
@@ -91,22 +91,35 @@ public class MainframeLoginView implements GameView {
 		fill(255,255,255,20);
 		rect(login[0], login[1], login[2], login[3]);
 		
-		// password box label
-		textFont(proggyClean, 32);
-		//fill(255);
-		fill(greenScreen[0], greenScreen[1], greenScreen[2]);
-		text(loginText, login[0] - loginText.length() * 32/4 + 16, login[1] - login[3]);
-		
 		//println(game.state);
 		uas = (UnauthorizedState)game.state;
-		if (uas.getGuesses() > 0) {
+		if (uas.justDenied && !uas.authorized) {
+			fill(0,0,0,0);
+			stroke(255,0,0);
+			rect(login[0], login[1] - 48, login[2], login[3]);
+			fill(255,0,0);
 			this.loginText = "Access Denied";
-		} else if (uas.authorized) {
+		}
+		
+		if (!uas.justDenied && !uas.authorized) {
+			fill(greenScreen[0], greenScreen[1], greenScreen[2]);
+			this.loginText = "Enter password:";
+		}
+		
+		if (uas.authorized) {
 			this.loginText = "Access Granted";
+			fill(greenScreen[0], greenScreen[1], greenScreen[2]);
 			//delay(1000);
 			doneFrames++;
 			//game.viewDone = true;
 		}
+		
+		// password box label
+		textFont(proggyClean, 32);
+		//fill(255);
+		//fill(greenScreen[0], greenScreen[1], greenScreen[2]);
+		text(loginText, login[0] - loginText.length() * 32/4 + 16, login[1] - login[3]);
+		
 		
 		// password text in password box
 		rectMode(CENTER);
@@ -124,6 +137,7 @@ public class MainframeLoginView implements GameView {
 		if (cursor) {
 			strokeWeight(5);
 			strokeCap(SQUARE);
+			stroke(greenScreen[0], greenScreen[1], greenScreen[2]);
 			line(
 				login[0] - login[2]/2 + 16 + (uas.buffer.length() * 13.5),
 			 	login[1] + 8,
