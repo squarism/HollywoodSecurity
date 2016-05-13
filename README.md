@@ -1,5 +1,8 @@
-Wut
+Hollywood Security System
 =====
+
+![screenshot](https://raw.githubusercontent.com/squarism/HollywoodSecurity/master/sshot_1.png)
+
 This is a Processing sketch that looks like one of those BS security systems in the movies.  Picture this, a bomb is going to go off unless the hero cop hacks 'a system'.
 
 	Damsel: 	"Oh no!  We don't have the password!"
